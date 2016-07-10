@@ -2,9 +2,8 @@
 
 public class ExplosionController : MonoBehaviour {
 
-	// Use this for initialization
 	void Start () {
-		Invoke("die", 5);
+		Invoke("die", 0.5f);
 	}
 
 	private void die() {

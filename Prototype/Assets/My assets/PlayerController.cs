@@ -17,18 +17,20 @@ public class PlayerController : MonoBehaviour {
 		power = 0;
 	}
 	void FixedUpdate() {
-		rb.velocity = new Vector2(
+		Vector2 velocity = new Vector2(
 				Input.GetAxis("Horizontal"+PlayerNumber),
 				-Input.GetAxis("Vertical"+PlayerNumber)
 			) * Speed;
 
-		if (rb.velocity.magnitude > 0)
-			direction = rb.velocity.normalized;
+		if (velocity.magnitude > 0)
+			direction = velocity.normalized;
+		else
+			rb.velocity = velocity;
 
 		if (Input.GetButton("Fire"+PlayerNumber)) {
 			power = Mathf.Min(power + 0.025f, 1f);
-		}
-		else if (power > 0f) {
+			return;
+		} else if (power > 0f) {
 			GameObject projectile = Instantiate(ProjectileObject) as GameObject;
 			projectile.transform.position = transform.position;
 			projectile.transform.localScale *= ProjectileSize;
@@ -38,6 +40,9 @@ public class PlayerController : MonoBehaviour {
 			power = 0f;
 		}
 
+		rb.velocity = velocity;
+	}
+	void Update() {
 		Powerfill.localScale = new Vector3(
 				Mathf.Lerp(Powerfill.localScale.x, power, Time.deltaTime * 5),
 				Powerfill.localScale.y,
