@@ -4,6 +4,7 @@ public class ProjectileController : MonoBehaviour {
 	public float LifetimeSeconds;
 	public GameObject CombinationObject;
 	public bool Destroyed;
+    public int type;
 
 	private Rigidbody2D rb;
 	private bool counting;
@@ -20,7 +21,7 @@ public class ProjectileController : MonoBehaviour {
 		}
 	}
 	void OnCollisionEnter2D(Collision2D collision) {
-		if (Destroyed)
+        if (Destroyed)
 			return;
 
 		collision.gameObject.GetComponent<ProjectileController>().Destroyed = true;
