@@ -6,30 +6,32 @@ public class ProjectileController : MonoBehaviour {
 	public bool Destroyed;
 
 	private Rigidbody2D rb;
-	private bool counting;
+	private bool dying;
 
 	void Start() {
 		rb = GetComponent<Rigidbody2D>();
-		counting = false;
 		Destroyed = false;
+		dying = false;
 	}
 	void FixedUpdate() {
-		if (!counting && rb.velocity.magnitude == 0f) {
+		if (!dying && rb.velocity.magnitude == 0f) {
 			Invoke("die", LifetimeSeconds);
-			counting = true;
+			dying = true;
 		}
 	}
 	void OnCollisionEnter2D(Collision2D collision) {
-		if (Destroyed)
+    if (Destroyed)
+			return;
+		Destroy(gameObject);
+
+		if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
 			return;
 
 		collision.gameObject.GetComponent<ProjectileController>().Destroyed = true;
-
 		GameObject combination = Instantiate(CombinationObject) as GameObject;
 		combination.transform.position = transform.position;
 
 		Destroy(collision.gameObject);
-		Destroy(gameObject);
 	}
 
 	private void die() {

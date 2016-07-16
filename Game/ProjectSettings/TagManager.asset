@@ -14,10 +14,10 @@ TagManager:
   - 
   - 
   - Wall
+  - Player
   - ProjectileBy1
   - ProjectileBy2
-  - 
-  - 
+  - ObjectiveEnemy
   - 
   - 
   - 
