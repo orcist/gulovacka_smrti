@@ -900,7 +900,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerNumber: 1
-  Speed: 8
+  Speed: 7
   ProjectileObject: {fileID: 177992, guid: 0586d749ccdd3614d82154bfe6bcc856, type: 2}
   ProjectileSize: 1
   FirePower: 10
@@ -1082,7 +1082,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerNumber: 2
-  Speed: 3
+  Speed: 3.5
   ProjectileObject: {fileID: 177992, guid: 0586d749ccdd3614d82154bfe6bcc856, type: 2}
   ProjectileSize: 2
   FirePower: 10

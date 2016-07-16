@@ -24,19 +24,13 @@ public class PlayerController : MonoBehaviour {
 
 		if (velocity.magnitude > 0)
 			direction = velocity.normalized;
-		else
-			rb.velocity = velocity;
 
 		if (Input.GetButton("Fire"+PlayerNumber)) {
 			power = Mathf.Min(power + 0.025f, 1f);
+			rb.velocity = Vector2.zero;
 			return;
 		} else if (power > 0f) {
-			GameObject projectile = Instantiate(ProjectileObject) as GameObject;
-			projectile.transform.position = transform.position;
-			projectile.transform.localScale *= ProjectileSize;
-			projectile.GetComponent<Rigidbody2D>().AddForce(
-					direction * power * FirePower
-				);
+			fire();
 			power = 0f;
 		}
 
@@ -47,6 +41,15 @@ public class PlayerController : MonoBehaviour {
 				Mathf.Lerp(Powerfill.localScale.x, power, Time.deltaTime * 5),
 				Powerfill.localScale.y,
 				Powerfill.localScale.z
+			);
+	}
+	private void fire() {
+		GameObject projectile = Instantiate(ProjectileObject) as GameObject;
+		projectile.layer = LayerMask.NameToLayer("ProjectileBy"+PlayerNumber);
+		projectile.transform.position = transform.position;
+		projectile.transform.localScale *= ProjectileSize;
+		projectile.GetComponent<Rigidbody2D>().AddForce(
+				direction * power * FirePower
 			);
 	}
 }
