@@ -7,8 +7,9 @@ public class PlayerController : MonoBehaviour {
 	public float ProjectileSize;
 	public float FirePower;
 	public RectTransform Powerfill;
+  public bool Dead = false;
 
-	private Rigidbody2D rb;
+  private Rigidbody2D rb;
 	private float power;
 	private Vector2 direction;
 
