@@ -24,8 +24,9 @@ public class ProjectileController : MonoBehaviour {
 			return;
 		Destroy(gameObject);
 
-		if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
-			return;
+		if (collision.gameObject.layer == LayerMask.NameToLayer("ObjectiveEnemy") ||
+      collision.gameObject.layer == LayerMask.NameToLayer("PlayerEnemy"))
+      return;
 
 		collision.gameObject.GetComponent<ProjectileController>().Destroyed = true;
 		GameObject combination = Instantiate(CombinationObject) as GameObject;

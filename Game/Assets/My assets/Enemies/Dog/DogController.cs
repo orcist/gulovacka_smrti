@@ -1,22 +1,21 @@
 ﻿using UnityEngine;
 
 public class DogController : EnemyController {
-  public GameObject Exit;
+  public GameObject LevelExit;
 
   void FixedUpdate() {
     GameObject closest = Targets[0];
 
     bool hasTarget = false;
     foreach (GameObject target in Targets) {
-      if (target.GetComponent<PlayerController>().Dead) 
+      if (onLayer(target, "Player") && target.GetComponent<PlayerController>().Dead)
         continue;
-      else 
-       // hasTarget = true;
 
+      hasTarget = true;
       if (distanceTo(target) < distanceTo(closest))
         closest = target;
     }
-    if (!hasTarget) closest = Exit;
+    if (!hasTarget) closest = LevelExit;
 
     moveTowards(closest.transform.position);
   }
