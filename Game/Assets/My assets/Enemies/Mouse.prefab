@@ -9,12 +9,12 @@ GameObject:
   m_Component:
   - 4: {fileID: 485844}
   - 212: {fileID: 21240078}
-  - 114: {fileID: 11461688}
   - 50: {fileID: 5062608}
   - 61: {fileID: 6107974}
+  - 114: {fileID: 11461688}
   m_Layer: 12
   m_Name: Mouse
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

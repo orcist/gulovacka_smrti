@@ -9,13 +9,13 @@ GameObject:
   m_Component:
   - 4: {fileID: 494616}
   - 212: {fileID: 21215292}
-  - 114: {fileID: 11464560}
   - 50: {fileID: 5061282}
   - 61: {fileID: 6173182}
   - 58: {fileID: 5853748}
+  - 114: {fileID: 11464560}
   m_Layer: 12
   m_Name: Meerkat
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
