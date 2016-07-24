@@ -28,8 +28,6 @@ public class PlayerController : MonoBehaviour {
 
 		if (Input.GetButton("Fire"+PlayerNumber)) {
 			power = Mathf.Min(power + 0.025f, 1f);
-			rb.velocity = Vector2.zero;
-			return;
 		} else if (power > 0f) {
 			fire();
 			power = 0f;
@@ -45,12 +43,11 @@ public class PlayerController : MonoBehaviour {
 			);
 	}
 	private void fire() {
-		GameObject projectile = Instantiate(ProjectileObject) as GameObject;
+		GameObject projectile = Instantiate(ProjectileObject, transform.position, Quaternion.identity) as GameObject;
 		projectile.layer = LayerMask.NameToLayer("ProjectileBy"+PlayerNumber);
-		projectile.transform.position = transform.position;
 		projectile.transform.localScale *= ProjectileSize;
 		projectile.GetComponent<Rigidbody2D>().AddForce(
-				direction * power * FirePower
+				rb.velocity + direction * power * FirePower
 			);
 	}
 }

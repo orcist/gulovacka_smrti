@@ -1322,10 +1322,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerNumber: 1
-  Speed: 7
+  Speed: 6.5
   ProjectileObject: {fileID: 177992, guid: 0586d749ccdd3614d82154bfe6bcc856, type: 2}
   ProjectileSize: 1
-  FirePower: 10
+  FirePower: 6
   Powerfill: {fileID: 1520718371}
   Dead: 0
 --- !u!212 &1608674600
@@ -1621,10 +1621,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerNumber: 2
-  Speed: 3.5
+  Speed: 4
   ProjectileObject: {fileID: 177992, guid: 0586d749ccdd3614d82154bfe6bcc856, type: 2}
   ProjectileSize: 2
-  FirePower: 10
+  FirePower: 6
   Powerfill: {fileID: 1940962724}
   Dead: 0
 --- !u!212 &1678632679
