@@ -13,7 +13,7 @@ public class MeerkatController : EnemyController {
     if (dodging) {
       moveTowards(dodgeTarget);
 
-      if ((dodgeTarget - transform.position).magnitude < 0.1) {
+      if ((dodgeTarget - transform.position).magnitude < 0.1f) {
         Speed /= DodgeSpeed;
         dodging = false;
         Invoke("resetDodge", DodgeCooldown);
@@ -33,7 +33,7 @@ public class MeerkatController : EnemyController {
   }
 
   private void dodge(Vector3 projectilePosition) {
-    float op = (Random.Range(0,2) % 2 == 0) ? 1 : -1;
+    float op = (Random.Range(0, 2) % 2 == 0) ? 1 : -1;
     dodgeTarget = transform.position +
       Quaternion.AngleAxis(90 * op, -Vector3.forward) *
       (projectilePosition - transform.position).normalized

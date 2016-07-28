@@ -8,6 +8,7 @@ public class SpawnController : MonoBehaviour {
   public GameObject Cheese;
   public float RestTime;
   public float MinSpawnDelay, MaxSpawnDelay;
+  public GameObject SpecialExit;
 
   private Transform[] spawns;
   private Dictionary<GameObject, int>[] waves;
@@ -57,7 +58,15 @@ public class SpawnController : MonoBehaviour {
     );
 
     GameObject ego = Instantiate(enemy) as GameObject;
-    ego.transform.position = spawns[Random.Range(0, spawns.Length)].transform.position;
+    DogController dog = enemy.GetComponent<DogController>();
+
+    if (dog == null) {
+      ego.transform.position = spawns[Random.Range(0, spawns.Length)].transform.position;
+    } else {
+      dog.LevelExit = SpecialExit;
+      ego.transform.position = SpecialExit.transform.position;
+    }
+
     if (enemy.layer == LayerMask.NameToLayer("ObjectiveEnemy"))
       ego.GetComponent<EnemyController>().Targets = new GameObject[] { Cheese };
     else if (enemy.layer == LayerMask.NameToLayer("PlayerEnemy"))

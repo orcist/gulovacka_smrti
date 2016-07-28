@@ -18,5 +18,8 @@ public class DogController : EnemyController {
     if (!hasTarget) closest = LevelExit;
 
     moveTowards(closest.transform.position);
+
+    if (!hasTarget && distanceTo(closest) < 0.1f)
+      Destroy(gameObject);
   }
 }

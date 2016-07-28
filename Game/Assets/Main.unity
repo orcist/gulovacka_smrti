@@ -1302,6 +1302,7 @@ MonoBehaviour:
   RestTime: 5
   MinSpawnDelay: 0.1
   MaxSpawnDelay: 2
+  SpecialExit: {fileID: 791297027}
 --- !u!1 &1520718370
 GameObject:
   m_ObjectHideFlags: 0
