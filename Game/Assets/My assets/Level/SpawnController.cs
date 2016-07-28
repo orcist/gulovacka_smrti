@@ -56,8 +56,8 @@ public class SpawnController : MonoBehaviour {
       Random.Range(MinSpawnDelay, MaxSpawnDelay)
     );
 
-    Vector3 newPosition = spawns[Random.Range(0, spawns.Length)].transform.position;
-    GameObject ego = Instantiate(enemy, newPosition, Quaternion.identity) as GameObject;
+    GameObject ego = Instantiate(enemy) as GameObject;
+    ego.transform.position = spawns[Random.Range(0, spawns.Length)].transform.position;
     if (enemy.layer == LayerMask.NameToLayer("ObjectiveEnemy"))
       ego.GetComponent<EnemyController>().Targets = new GameObject[] { Cheese };
     else if (enemy.layer == LayerMask.NameToLayer("PlayerEnemy"))

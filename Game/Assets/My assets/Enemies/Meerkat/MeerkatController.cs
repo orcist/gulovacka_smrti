@@ -7,15 +7,15 @@ public class MeerkatController : EnemyController {
 
   private Vector3 dodgeTarget;
   private bool canDodge = true;
-  private bool isDodging = false;
+  private bool dodging = false;
 
 	void FixedUpdate() {
-    if (isDodging) {
+    if (dodging) {
       moveTowards(dodgeTarget);
 
       if ((dodgeTarget - transform.position).magnitude < 0.1) {
         Speed /= DodgeSpeed;
-        isDodging = false;
+        dodging = false;
         Invoke("resetDodge", DodgeCooldown);
       }
     } else {
@@ -24,7 +24,10 @@ public class MeerkatController : EnemyController {
   }
 
   private void OnTriggerEnter2D(Collider2D collision) {
-    if ((onLayer(collision.gameObject, "ProjectileBy1") || onLayer(collision.gameObject, "ProjectileBy2")) && canDodge) {
+    if (
+      (onLayer(collision.gameObject, "ProjectileBy1") ||
+      onLayer(collision.gameObject, "ProjectileBy2"))
+      && canDodge) {
       dodge(collision.transform.position);
     }
   }
@@ -36,7 +39,7 @@ public class MeerkatController : EnemyController {
       (projectilePosition - transform.position).normalized
       * DodgeDistance;
 
-    isDodging = true;
+    dodging = true;
     canDodge = false;
     Speed *= DodgeSpeed;
   }

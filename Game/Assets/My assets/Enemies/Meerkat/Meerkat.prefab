@@ -94,6 +94,7 @@ MonoBehaviour:
   DodgeCooldown: 2
   DodgeSpeed: 8
   DodgeDistance: 1
+  dodgeTarget: {x: 0, y: 0, z: 0}
 --- !u!212 &21215292
 SpriteRenderer:
   m_ObjectHideFlags: 1
