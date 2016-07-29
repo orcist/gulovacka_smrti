@@ -13,7 +13,7 @@ GameObject:
   - 50: {fileID: 5047592}
   - 114: {fileID: 11496294}
   m_Layer: 0
-  m_Name: ProjectileObject
+  m_Name: EarthProjectileObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

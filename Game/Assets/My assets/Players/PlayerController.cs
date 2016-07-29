@@ -3,7 +3,7 @@
 public class PlayerController : MonoBehaviour {
 	public int PlayerNumber;
 	public float Speed;
-	public GameObject ProjectileObject;
+	public GameObject ElementProjectile;
 	public float ProjectileSize;
 	public float ManaRegenRate;
 	public float FirePower;
@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour {
 		if (Input.GetButton("Fire"+PlayerNumber)) {
 			power = Mathf.Min(power + 0.025f, mana);
 		} else if (power > 0f) {
-			GameObject projectile = Instantiate(ProjectileObject, transform.position, Quaternion.identity) as GameObject;
+			GameObject projectile = Instantiate(ElementProjectile, transform.position, Quaternion.identity) as GameObject;
 			projectile.layer = LayerMask.NameToLayer("ProjectileBy"+PlayerNumber);
 			projectile.transform.localScale *= ProjectileSize;
 			projectile.GetComponent<Rigidbody2D>().AddForce(
