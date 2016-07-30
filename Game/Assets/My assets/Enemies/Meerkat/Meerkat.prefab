@@ -91,10 +91,11 @@ MonoBehaviour:
   Speed: 0.5
   Targets:
   - {fileID: 0}
+  ElementController: {fileID: 0}
+  DropChance: 0.2
   DodgeCooldown: 2
   DodgeSpeed: 8
   DodgeDistance: 1
-  dodgeTarget: {x: 0, y: 0, z: 0}
 --- !u!212 &21215292
 SpriteRenderer:
   m_ObjectHideFlags: 1

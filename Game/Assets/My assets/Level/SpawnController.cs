@@ -5,6 +5,7 @@ using System.Linq;
 public class SpawnController : MonoBehaviour {
   public GameObject MouseObject, DogObject, MeerkatObject;
   public GameObject[] Players;
+  public ElementController ElementController;
   public GameObject Cheese;
   public float RestTime;
   public float MinSpawnDelay, MaxSpawnDelay;
@@ -18,14 +19,14 @@ public class SpawnController : MonoBehaviour {
   void Start() {
     waves = new Dictionary<GameObject, int>[] {
       new Dictionary <GameObject, int> {
-        {MouseObject, 2}, {DogObject, 1}, {MeerkatObject, 0}
+        {MouseObject, 1}, {DogObject, 0}, {MeerkatObject, 0}
       },
-      new Dictionary <GameObject, int> {
-        {MouseObject, 3}, {DogObject, 3}, {MeerkatObject, 1}
-      },
-      new Dictionary <GameObject, int> {
-        {MouseObject, 5}, {DogObject, 6}, {MeerkatObject, 2}
-      }
+      // new Dictionary <GameObject, int> {
+      //   {MouseObject, 3}, {DogObject, 3}, {MeerkatObject, 1}
+      // },
+      // new Dictionary <GameObject, int> {
+      //   {MouseObject, 5}, {DogObject, 6}, {MeerkatObject, 2}
+      // }
     };
     spawns = GetComponentsInChildren<Transform>().Where(
       s => { return s != transform; }
@@ -58,8 +59,10 @@ public class SpawnController : MonoBehaviour {
     );
 
     GameObject ego = Instantiate(enemy) as GameObject;
-    DogController dog = enemy.GetComponent<DogController>();
+    EnemyController egoController = ego.GetComponent<EnemyController>();
+    egoController.ElementController = this.ElementController;
 
+    DogController dog = enemy.GetComponent<DogController>();
     if (dog == null) {
       ego.transform.position = spawns[Random.Range(0, spawns.Length)].transform.position;
     } else {
@@ -68,9 +71,9 @@ public class SpawnController : MonoBehaviour {
     }
 
     if (enemy.layer == LayerMask.NameToLayer("ObjectiveEnemy"))
-      ego.GetComponent<EnemyController>().Targets = new GameObject[] { Cheese };
+      egoController.Targets = new GameObject[] { Cheese };
     else if (enemy.layer == LayerMask.NameToLayer("PlayerEnemy"))
-      ego.GetComponent<EnemyController>().Targets = Players;
+      egoController.Targets = Players;
 
     spawning = false;
   }

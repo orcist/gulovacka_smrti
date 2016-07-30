@@ -77,6 +77,8 @@ MonoBehaviour:
   Targets:
   - {fileID: 0}
   - {fileID: 0}
+  ElementController: {fileID: 0}
+  DropChance: 0.2
   LevelExit: {fileID: 0}
 --- !u!212 &21238468
 SpriteRenderer:

@@ -3,6 +3,8 @@
 public class EnemyController : MonoBehaviour {
   public float Speed;
   public GameObject[] Targets;
+  public ElementController ElementController;
+  public float DropChance;
 
   protected Rigidbody2D rb;
 
@@ -23,8 +25,11 @@ public class EnemyController : MonoBehaviour {
   }
 
   private void OnCollisionEnter2D(Collision2D collision) {
-	  if (onLayer(collision.gameObject, "ProjectileBy1") || onLayer(collision.gameObject, "ProjectileBy2"))
+	  if (onLayer(collision.gameObject, "ProjectileBy1") || onLayer(collision.gameObject, "ProjectileBy2")) {
+      if (Random.Range(0f, 1f) < DropChance)
+        ElementController.DropAmmo(transform.position);
       Destroy(gameObject);
+    }
   }
 
   protected void moveTowards(Vector3 target) {

@@ -93,6 +93,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 30330792}
+  - 114: {fileID: 30330793}
   m_Layer: 0
   m_Name: Players
   m_TagString: Untagged
@@ -114,6 +115,27 @@ Transform:
   - {fileID: 1678632680}
   m_Father: {fileID: 0}
   m_RootOrder: 1
+--- !u!114 &30330793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 30330791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc01ceb70f88a8b4b990d5adc56baa19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player1: {fileID: 1608674599}
+  Player2: {fileID: 1678632678}
+  AirProjectile: {fileID: 177992, guid: 0586d749ccdd3614d82154bfe6bcc856, type: 2}
+  AirAmmo: {fileID: 124662, guid: 9df3ddebe26f82e4ca34a80a05d2ee9c, type: 2}
+  EarthProjectile: {fileID: 177992, guid: 09b6328f65384e046b010d2b2610aef8, type: 2}
+  EarthAmmo: {fileID: 124662, guid: b2e69b361af313141aae48f1a65cfa0b, type: 2}
+  FireProjectile: {fileID: 177992, guid: e376c5aa88cf45346b03444b7ce2078c, type: 2}
+  FireAmmo: {fileID: 124662, guid: eeaad22d30d062942a28cfba75feded2, type: 2}
+  WaterProjectile: {fileID: 177992, guid: 7838ba5077670f14e9c3cfdd194e8cfc, type: 2}
+  WaterAmmo: {fileID: 124662, guid: f128b5d9313c69a43b86800cbc92281e, type: 2}
 --- !u!1 &150870403
 GameObject:
   m_ObjectHideFlags: 0
@@ -503,7 +525,7 @@ GameObject:
   - 224: {fileID: 453975446}
   - 222: {fileID: 453975448}
   m_Layer: 5
-  m_Name: Spellpower1
+  m_Name: Spellbar1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1394,6 +1416,7 @@ MonoBehaviour:
   Players:
   - {fileID: 1608674598}
   - {fileID: 1678632677}
+  ElementController: {fileID: 30330793}
   Cheese: {fileID: 1637782591}
   RestTime: 5
   MinSpawnDelay: 0.1
@@ -1901,7 +1924,7 @@ GameObject:
   - 224: {fileID: 1727369246}
   - 222: {fileID: 1727369248}
   m_Layer: 5
-  m_Name: Spellpower2
+  m_Name: Spellbar2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2068,7 +2091,7 @@ GameObject:
   - 222: {fileID: 1940962726}
   - 114: {fileID: 1940962725}
   m_Layer: 5
-  m_Name: PowerFill2
+  m_Name: PowerBar2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2134,7 +2157,7 @@ GameObject:
   - 222: {fileID: 2019420116}
   - 114: {fileID: 2019420115}
   m_Layer: 5
-  m_Name: PowerFill1
+  m_Name: PowerBar1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
