@@ -62,7 +62,7 @@ public class SpawnController : MonoBehaviour {
     EnemyController egoController = ego.GetComponent<EnemyController>();
     egoController.ElementController = this.ElementController;
 
-    DogController dog = enemy.GetComponent<DogController>();
+    DogController dog = ego.GetComponent<DogController>();
     if (dog == null) {
       ego.transform.position = spawns[Random.Range(0, spawns.Length)].transform.position;
     } else {
