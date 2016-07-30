@@ -11,6 +11,9 @@ public class PlayerController : MonoBehaviour {
 	public RectTransform ManaBar, PowerFill;
 	public RawImage ElementIcon;
   public bool Dead = false;
+	public float DeadSpeed;
+	public CheeseController Cheese;
+	public int RessurectionDamage;
 
   private Rigidbody2D rb;
 	private ElementController elementController;
@@ -40,11 +43,30 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D c) {
-		if (c.gameObject.layer != LayerMask.NameToLayer("Ammo"))
+		if (c.gameObject.layer == LayerMask.NameToLayer("Ammo")) {
+			Projectile = elementController.GetProjectile(c.gameObject);
+			ElementIcon.texture = elementController.GetIcon(c.gameObject);
+		}
+	}
+
+	void OnTriggerStay2D(Collider2D c) {
+		if (
+				Dead &&
+				c.gameObject == Cheese.gameObject &&
+				Cheese.HitPoints - Mathf.Abs(RessurectionDamage) > 0
+			) {
+			Cheese.HitPoints -= Mathf.Abs(RessurectionDamage);
+			Dead = false;
+			Speed /= DeadSpeed;
+		}
+	}
+
+	void OnCollisionEnter2D(Collision2D c) {
+		if (c.gameObject.layer != LayerMask.NameToLayer("PlayerEnemy"))
 			return;
 
-		Projectile = elementController.GetProjectile(c.gameObject);
-		ElementIcon.texture = elementController.GetIcon(c.gameObject);
+		Dead = true;
+		Speed *= DeadSpeed;
 	}
 
 	private void move() {
@@ -68,6 +90,12 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	private void handleFiring() {
+		if (Dead) {
+			mana = 0;
+			power = 0;
+			return;
+		}
+
 		if (Input.GetButton("Fire"+PlayerNumber)) {
 			power = Mathf.Min(power + 0.025f, mana);
 		} else if (power > 0f) {

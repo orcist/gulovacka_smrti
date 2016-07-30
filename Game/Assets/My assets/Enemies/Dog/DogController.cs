@@ -4,22 +4,21 @@ public class DogController : EnemyController {
   public GameObject LevelExit;
 
   void FixedUpdate() {
-    GameObject closest = Targets[0];
+    GameObject closest = null;
 
-    bool hasTarget = false;
     foreach (GameObject target in Targets) {
       if (onLayer(target, "Player") && target.GetComponent<PlayerController>().Dead)
         continue;
 
-      hasTarget = true;
-      if (distanceTo(target) < distanceTo(closest))
+      if (closest == null || distanceTo(target) < distanceTo(closest))
         closest = target;
     }
-    if (!hasTarget) closest = LevelExit;
+    if (closest == null) {
+      closest = LevelExit;
+      if (distanceTo(closest) < 0.1f)
+        Destroy(gameObject);
+    }
 
     moveTowards(closest.transform.position);
-
-    if (!hasTarget && distanceTo(closest) < 0.1f)
-      Destroy(gameObject);
   }
 }

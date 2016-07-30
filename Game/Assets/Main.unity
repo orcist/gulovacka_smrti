@@ -1532,6 +1532,9 @@ MonoBehaviour:
   PowerFill: {fileID: 2019420114}
   ElementIcon: {fileID: 805254330}
   Dead: 0
+  DeadSpeed: 0.5
+  Cheese: {fileID: 1637782595}
+  RessurectionDamage: 50
 --- !u!212 &1608674600
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1569,7 +1572,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1608674598}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1, y: 0, z: 0}
+  m_LocalPosition: {x: -1.5, y: 0, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 30330792}
@@ -1673,6 +1676,7 @@ GameObject:
   - 4: {fileID: 1637782592}
   - 212: {fileID: 1637782593}
   - 61: {fileID: 1637782594}
+  - 58: {fileID: 1637782596}
   - 114: {fileID: 1637782595}
   m_Layer: 0
   m_Name: Cheese
@@ -1748,7 +1752,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23922e5f02d0ed1469ff5848bda1e222, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HitPoints: 2147483647
+  HitPoints: 1000
+--- !u!58 &1637782596
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1637782591}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.41
 --- !u!1 &1657824925
 GameObject:
   m_ObjectHideFlags: 0
@@ -1847,6 +1865,9 @@ MonoBehaviour:
   PowerFill: {fileID: 1940962724}
   ElementIcon: {fileID: 1785679571}
   Dead: 0
+  DeadSpeed: 0.5
+  Cheese: {fileID: 1637782595}
+  RessurectionDamage: 100
 --- !u!212 &1678632679
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1884,7 +1905,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1678632677}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: 0}
+  m_LocalPosition: {x: 1.5, y: 0, z: 0}
   m_LocalScale: {x: 2.3, y: 2.3, z: 1}
   m_Children: []
   m_Father: {fileID: 30330792}

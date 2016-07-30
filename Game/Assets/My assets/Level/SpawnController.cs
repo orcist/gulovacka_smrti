@@ -19,7 +19,7 @@ public class SpawnController : MonoBehaviour {
   void Start() {
     waves = new Dictionary<GameObject, int>[] {
       new Dictionary <GameObject, int> {
-        {MouseObject, 1}, {DogObject, 0}, {MeerkatObject, 0}
+        {MouseObject, 0}, {DogObject, 1}, {MeerkatObject, 0}
       },
       // new Dictionary <GameObject, int> {
       //   {MouseObject, 3}, {DogObject, 3}, {MeerkatObject, 1}
