@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - enemy
+  - AirAmmo
+  - EarthAmmo
+  - FireAmmo
+  - WaterAmmo
   layers:
   - Default
   - TransparentFX

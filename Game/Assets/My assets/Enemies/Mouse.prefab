@@ -77,7 +77,7 @@ MonoBehaviour:
   Targets:
   - {fileID: 0}
   ElementController: {fileID: 0}
-  DropChance: 0.2
+  DropChance: 1
 --- !u!212 &21240078
 SpriteRenderer:
   m_ObjectHideFlags: 1

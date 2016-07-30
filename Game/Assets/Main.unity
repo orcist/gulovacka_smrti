@@ -130,12 +130,16 @@ MonoBehaviour:
   Player2: {fileID: 1678632678}
   AirProjectile: {fileID: 177992, guid: 0586d749ccdd3614d82154bfe6bcc856, type: 2}
   AirAmmo: {fileID: 124662, guid: 9df3ddebe26f82e4ca34a80a05d2ee9c, type: 2}
+  AirIcon: {fileID: 2800000, guid: 0d59d1142abd5e84fbe15c4a25798f7e, type: 3}
   EarthProjectile: {fileID: 177992, guid: 09b6328f65384e046b010d2b2610aef8, type: 2}
   EarthAmmo: {fileID: 124662, guid: b2e69b361af313141aae48f1a65cfa0b, type: 2}
+  EarthIcon: {fileID: 2800000, guid: 1ffce42fb671118478f510439ae6d7b2, type: 3}
   FireProjectile: {fileID: 177992, guid: e376c5aa88cf45346b03444b7ce2078c, type: 2}
   FireAmmo: {fileID: 124662, guid: eeaad22d30d062942a28cfba75feded2, type: 2}
+  FireIcon: {fileID: 2800000, guid: 4f309444179524b4f999a7b5f687eabc, type: 3}
   WaterProjectile: {fileID: 177992, guid: 7838ba5077670f14e9c3cfdd194e8cfc, type: 2}
   WaterAmmo: {fileID: 124662, guid: f128b5d9313c69a43b86800cbc92281e, type: 2}
+  WaterIcon: {fileID: 2800000, guid: 6346f07d1f0cf1f46b52656aa5582656, type: 3}
 --- !u!1 &150870403
 GameObject:
   m_ObjectHideFlags: 0
@@ -859,14 +863,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Texture: {fileID: 2800000, guid: 580615edf5e29d245af58fc5fe2b06ac, type: 3}
+  m_Texture: {fileID: 2800000, guid: 6346f07d1f0cf1f46b52656aa5582656, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -1418,7 +1422,7 @@ MonoBehaviour:
   - {fileID: 1678632677}
   ElementController: {fileID: 30330793}
   Cheese: {fileID: 1637782591}
-  RestTime: 5
+  RestTime: 0
   MinSpawnDelay: 0.1
   MaxSpawnDelay: 2
   SpecialExit: {fileID: 791297027}
@@ -1520,12 +1524,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerNumber: 1
   Speed: 6.5
-  ElementProjectile: {fileID: 177992, guid: 0586d749ccdd3614d82154bfe6bcc856, type: 2}
+  Projectile: {fileID: 177992, guid: 7838ba5077670f14e9c3cfdd194e8cfc, type: 2}
   ProjectileSize: 1
   ManaRegenRate: 0.003
   FirePower: 6
   ManaBar: {fileID: 1520718371}
   PowerFill: {fileID: 2019420114}
+  ElementIcon: {fileID: 805254330}
   Dead: 0
 --- !u!212 &1608674600
 SpriteRenderer:
@@ -1743,7 +1748,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23922e5f02d0ed1469ff5848bda1e222, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HitPoints: 500
+  HitPoints: 2147483647
 --- !u!1 &1657824925
 GameObject:
   m_ObjectHideFlags: 0
@@ -1834,12 +1839,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerNumber: 2
   Speed: 4
-  ElementProjectile: {fileID: 177992, guid: 09b6328f65384e046b010d2b2610aef8, type: 2}
+  Projectile: {fileID: 177992, guid: e376c5aa88cf45346b03444b7ce2078c, type: 2}
   ProjectileSize: 2
   ManaRegenRate: 0.015
   FirePower: 6
   ManaBar: {fileID: 1036512891}
   PowerFill: {fileID: 1940962724}
+  ElementIcon: {fileID: 1785679571}
   Dead: 0
 --- !u!212 &1678632679
 SpriteRenderer:
@@ -2002,14 +2008,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Texture: {fileID: 2800000, guid: 580615edf5e29d245af58fc5fe2b06ac, type: 3}
+  m_Texture: {fileID: 2800000, guid: 4f309444179524b4f999a7b5f687eabc, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0

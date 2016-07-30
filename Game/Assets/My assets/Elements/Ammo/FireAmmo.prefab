@@ -10,10 +10,10 @@ GameObject:
   - 4: {fileID: 405426}
   - 212: {fileID: 21275646}
   - 61: {fileID: 6100486}
-  - 50: {fileID: 5081224}
+  - 114: {fileID: 11481424}
   m_Layer: 14
-  m_Name: EarthAmmo
-  m_TagString: Untagged
+  m_Name: FireAmmo
+  m_TagString: FireAmmo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,23 +30,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!50 &5081224
-Rigidbody2D:
-  serializedVersion: 2
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 124662}
-  m_UseAutoMass: 0
-  m_Mass: 0.02
-  m_LinearDrag: 1
-  m_AngularDrag: 0
-  m_GravityScale: 0
-  m_IsKinematic: 0
-  m_Interpolate: 1
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 4
 --- !u!61 &6100486
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -56,11 +39,23 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 0.32, y: 0.32}
+--- !u!114 &11481424
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 124662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f77ee6f4b8c76f469705e3c14eaeca6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LifetimeSeconds: 3.5
 --- !u!212 &21275646
 SpriteRenderer:
   m_ObjectHideFlags: 1
