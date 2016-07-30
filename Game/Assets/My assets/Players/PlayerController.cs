@@ -100,6 +100,7 @@ public class PlayerController : MonoBehaviour {
 			power = Mathf.Min(power + 0.025f, mana);
 		} else if (power > 0f) {
 			GameObject projectile = Instantiate(Projectile, transform.position, Quaternion.identity) as GameObject;
+      projectile.GetComponent<ProjectileController>().ElementController = elementController;
 			projectile.layer = LayerMask.NameToLayer("ProjectileBy"+PlayerNumber);
 			projectile.transform.localScale *= ProjectileSize;
 			projectile.GetComponent<Rigidbody2D>().AddForce(

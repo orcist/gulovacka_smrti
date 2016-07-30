@@ -12,10 +12,18 @@ public class ElementController : MonoBehaviour {
 	public GameObject WaterProjectile, WaterAmmo;
 	public Texture WaterIcon;
 
-	private Dictionary<GameObject, GameObject> ammoMapping;
-	private Dictionary<string, Texture> iconMapping;
+  public GameObject SteamExplosion;
+  public GameObject HotPizzaSlice;
+  public GameObject PotWithSoup;
+  public GameObject IceCream;
+  public GameObject NachosPool;
+  public GameObject FrenchFries;
 
-	void Start () {
+  private Dictionary<GameObject, GameObject> ammoMapping;
+	private Dictionary<string, Texture> iconMapping;
+  private Dictionary<string, GameObject> combinationMapping;
+
+  void Start () {
 		ammoMapping = new Dictionary<GameObject, GameObject>() {
 			{AirProjectile, AirAmmo}, {EarthProjectile, EarthAmmo},
 			{FireProjectile, FireAmmo}, {WaterProjectile, WaterAmmo},
@@ -24,7 +32,12 @@ public class ElementController : MonoBehaviour {
 			{"AirAmmo", AirIcon}, {"EarthAmmo", EarthIcon},
 			{"FireAmmo", FireIcon}, {"WaterAmmo", WaterIcon},
 		};
-	}
+    combinationMapping = new Dictionary<string, GameObject>() {
+      {"AF", SteamExplosion}, {"FE", HotPizzaSlice},
+      {"FW", PotWithSoup}, {"WA", IceCream},
+      {"WE", NachosPool}, {"EA", FrenchFries},
+    };
+  }
 
 	public void DropAmmo(Vector3 position) {
 		List<GameObject> availableAmmo = new List<GameObject>();
@@ -48,4 +61,13 @@ public class ElementController : MonoBehaviour {
 	public Texture GetIcon(GameObject ammoObject) {
 		return iconMapping[ammoObject.tag];
 	}
+
+  public GameObject GetCombination(string tagA, string tagB) {
+    if (combinationMapping.ContainsKey(tagA[0] + "" + tagB[0])) {
+      return combinationMapping[tagA[0]+ "" + tagB[0]];
+    } else {
+      return null;
+    }
+  }
 }
+

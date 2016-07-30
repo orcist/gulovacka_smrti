@@ -1,17 +1,18 @@
 ﻿using UnityEngine;
 
 public class ProjectileController : MonoBehaviour {
-	public float LifetimeSeconds;
-	public GameObject CombinationObject;
+  public float LifetimeSeconds;
 	public bool Destroyed;
+  public ElementController ElementController;
 
-	private Rigidbody2D rb;
+  private Rigidbody2D rb;
 	private bool dying;
 
-	void Start() {
+  void Start() {
 		rb = GetComponent<Rigidbody2D>();
 		Destroyed = false;
 		dying = false;
+
 	}
 	void FixedUpdate() {
 		if (!dying && rb.velocity.magnitude == 0f) {
@@ -22,20 +23,30 @@ public class ProjectileController : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D collision) {
     if (Destroyed)
 			return;
-		Destroy(gameObject);
 
 		if (collision.gameObject.layer == LayerMask.NameToLayer("ObjectiveEnemy") ||
-      collision.gameObject.layer == LayerMask.NameToLayer("PlayerEnemy"))
-      return;
-
-		collision.gameObject.GetComponent<ProjectileController>().Destroyed = true;
-		GameObject combination = Instantiate(CombinationObject) as GameObject;
-		combination.transform.position = transform.position;
-
-		Destroy(collision.gameObject);
+      collision.gameObject.layer == LayerMask.NameToLayer("PlayerEnemy")) {
+      if (!collision.gameObject.GetComponent<EnemyController>().isFrozen()) {
+        die();
+      }
+    } else {
+      die();
+      collision.gameObject.GetComponent<ProjectileController>().Destroyed = true;
+      createCombination(gameObject, collision.gameObject);
+      Destroy(collision.gameObject);
+    }
 	}
 
-	private void die() {
+  private void createCombination(GameObject projectileA, GameObject projectileB) {
+    GameObject combinationObject = ElementController.GetCombination(projectileA.tag, projectileB.tag);
+
+    if (combinationObject != null) { 
+      GameObject combination = Instantiate(combinationObject) as GameObject;
+      combination.transform.position = projectileA.transform.position;
+    }
+  }
+
+  private void die() {
 		Destroy(gameObject);
 	}
 }

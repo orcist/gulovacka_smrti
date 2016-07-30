@@ -9,6 +9,16 @@ TagManager:
   - EarthAmmo
   - FireAmmo
   - WaterAmmo
+  - AirProjectile
+  - EarthProjectile
+  - FireProjectile
+  - WaterProjectile
+  - SteamExplosion
+  - HotPizzaSlice
+  - PotWithSoup
+  - IceCream
+  - NachosPool
+  - FrenchFries
   layers:
   - Default
   - TransparentFX
@@ -25,7 +35,7 @@ TagManager:
   - ObjectiveEnemy
   - PlayerEnemy
   - Ammo
-  - 
+  - Combinations
   - 
   - 
   - 
