@@ -3,7 +3,6 @@
 public class ProjectileController : MonoBehaviour {
   public float LifetimeSeconds;
 	public bool Destroyed;
-  public ElementController ElementController;
 
   private Rigidbody2D rb;
 	private bool dying;
@@ -14,36 +13,37 @@ public class ProjectileController : MonoBehaviour {
 		dying = false;
 
 	}
+
 	void FixedUpdate() {
 		if (!dying && rb.velocity.magnitude == 0f) {
 			Invoke("die", LifetimeSeconds);
 			dying = true;
 		}
 	}
+
 	void OnCollisionEnter2D(Collision2D collision) {
     if (Destroyed)
 			return;
 
+    die();
 		if (collision.gameObject.layer == LayerMask.NameToLayer("ObjectiveEnemy") ||
       collision.gameObject.layer == LayerMask.NameToLayer("PlayerEnemy")) {
-      if (!collision.gameObject.GetComponent<EnemyController>().isFrozen()) {
-        die();
-      }
-    } else {
-      die();
+      return;
+    } else if (collision.gameObject.layer == LayerMask.NameToLayer("Powerup")){
+      triggerPowerup(collision.gameObject); // actually code this.
+    } else { // projectile collision
       collision.gameObject.GetComponent<ProjectileController>().Destroyed = true;
-      createCombination(gameObject, collision.gameObject);
+      createPowerup();
       Destroy(collision.gameObject);
     }
 	}
 
-  private void createCombination(GameObject projectileA, GameObject projectileB) {
-    GameObject combinationObject = ElementController.GetCombination(projectileA.tag, projectileB.tag);
+  private void createPowerup() {
+    // create powerup
+  }
 
-    if (combinationObject != null) { 
-      GameObject combination = Instantiate(combinationObject) as GameObject;
-      combination.transform.position = projectileA.transform.position;
-    }
+  private void triggerPowerup(GameObject GO) {
+    // trigger powerup that is GO
   }
 
   private void die() {

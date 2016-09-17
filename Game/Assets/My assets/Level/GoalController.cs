@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class CheeseController : MonoBehaviour {
+public class GoalController : MonoBehaviour {
   public int HitPoints;
 
   void OnCollisionStay2D(Collision2D collision) {

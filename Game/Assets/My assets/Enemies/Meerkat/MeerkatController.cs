@@ -10,22 +10,16 @@ public class MeerkatController : EnemyController {
   private bool dodging = false;
 
 	void FixedUpdate() {
-    if (frozen) {
-      moveTowards(transform.position);
-    } else if (repeled) {
-      handleRepel();
-    } else { 
-      if (dodging) {
-        moveTowards(dodgeTarget);
+    if (dodging) {
+      moveTowards(dodgeTarget);
 
-        if ((dodgeTarget - transform.position).magnitude < 0.1f) {
-          Speed /= DodgeSpeed;
-          dodging = false;
-          Invoke("resetDodge", DodgeCooldown);
-        }
-      } else {
-        moveTowards(Targets[0].transform.position);
+      if ((dodgeTarget - transform.position).magnitude < 0.1f) {
+        Speed /= DodgeSpeed;
+        dodging = false;
+        Invoke("resetDodge", DodgeCooldown);
       }
+    } else {
+      moveTowards(Targets[0].transform.position);
     }
   }
 
@@ -37,7 +31,6 @@ public class MeerkatController : EnemyController {
   }
 
   private void OnTriggerEnter2D(Collider2D collision) {
-    base.OnTriggerEnter2D(collision);
     if (
       (onLayer(collision.gameObject, "ProjectileBy1") ||
       onLayer(collision.gameObject, "ProjectileBy2"))
